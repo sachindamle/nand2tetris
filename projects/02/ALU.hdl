@@ -46,18 +46,18 @@ CHIP ALU {
    
    Not16(in=x, out=notx);
    Not16(in=y, out=noty);
-   Mux4Way16(sel[1]=nx, sel[0]=zx  
-            , a=x         // sel=00
-            , b=false     // sel=01
-            , c=notx      // sel=10
-            , d=true      // sel=11
-            , out=f2);    // output to operate on
-   Mux4Way16(sel[1]=ny, sel[0]=zy  
-            , a = y       // sel=00
-            , b = false   // sel=01
-            , c = noty    // sel=10
-            , d = true    // sel=11
-            , out=f4);    // output to operate on   
+   Mux4Way16(sel[1]=nx, sel[0]=zx,  
+             a=x,         // sel=00
+             b=false,     // sel=01
+             c=notx,      // sel=10
+             d=true,      // sel=11
+             out=f2);     // output to operate on
+   Mux4Way16(sel[1]=ny, sel[0]=zy,  
+             a = y,       // sel=00
+             b = false,   // sel=01
+             c = noty,    // sel=10
+             d = true,    // sel=11
+             out=f4);     // output to operate on   
    
 //   Mux16(a=x, b=false, sel=zx, out=f1); 	// 16-bit constant
    
