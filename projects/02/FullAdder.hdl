@@ -16,5 +16,7 @@ CHIP FullAdder {
     // Put you code here:
     HalfAdder(a=a, b=b, sum=abSum, carry=abCarry);
     HalfAdder(a=abSum, b=c, sum=sum, carry=abcCarry);
+    // If either carries, pass it on
+    // Or(a=carry1, b=carry2, out=carry);
     HalfAdder(a=abCarry, b=abcCarry, sum=carry, carry=negletCarry); //Owing to overflow the last carry has to be be negelected
 }
