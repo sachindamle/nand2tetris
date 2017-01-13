@@ -12,3 +12,69 @@
 // the screen should remain fully clear as long as no key is pressed.
 
 // Put your code here.
+
+// LISTEN:
+// 		@KBD
+// 		D=M
+//  	if D > 0 goto PAINT
+//		goto LISTEN
+// PAINT:
+//		addr = SCREEN
+//		n = 16384
+//		i = 0
+//		LOOP:
+//	 		if 	i > n goto LISTEN
+//			RAM[addr] = -1
+//			addr = addr + 1
+//			goto LOOP
+//		goto END
+// END:
+//	goto LISTEN
+
+
+	(LISTEN)
+		@KBD
+		D=M
+		@PAINT
+		D;JGT
+		@LISTEN
+		0;JMP
+
+	(PAINT)
+		@SCREEN
+		D=A
+
+		@addr
+		M=D	//addr = 16384
+
+		@8160
+		D=A
+		@n
+		M=D
+
+		@i
+		M=0	// i = 0
+
+		(LOOP)
+			@i
+			D=M
+			@n
+			D=D-M
+			@LISTEN
+			D;JGT	// i > n
+
+			@addr
+			A=M
+			M=-1 // RAM[addr] = -1
+
+			@i
+			M=M+1   //i=i+1
+			@addr
+			M=M+1	//addr=addr+1
+			@LOOP
+			0;JMP	//goto LOOP
+
+		@LISTEN
+		0;JMP
+
+
